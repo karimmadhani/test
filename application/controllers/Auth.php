@@ -24,7 +24,13 @@ class Auth extends CI_Controller
             $verifikasi = $this->authModel->data_login($this->input->post('username'), $this->input->post('password'));
 
             if ($verifikasi == true) {
-                redirect('admin');
+                if ($verifikasi->is_active == 'active') {
+                    redirect('admin');
+                } else {
+                    $this->session->set_flashdata('gagal', '<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+											Akses Belum Disetujui!</div>');
+                    redirect('/');
+                }
             } else {
                 $this->session->set_flashdata('gagal', '<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
 											Username atau Password salah!</div>');

@@ -22,7 +22,7 @@ class adminModel extends CI_Model
     {
         $this->db->select('tb_barang.*, tb_jenis_barang.nama_jenis_barang as jenis_barang')->from('tb_barang');
         if ($id != null) {
-            return $this->db->where('id_barang', $id)->get()->row();
+            return $this->db->join('tb_jenis_barang', 'tb_jenis_barang.id_jenis_barang = tb_barang.id_jenis_barang')->where('id_barang', $id)->get()->row();
         } else {
             return $this->db->join('tb_jenis_barang', 'tb_jenis_barang.id_jenis_barang = tb_barang.id_jenis_barang')->get()->result();
         }

@@ -8,12 +8,10 @@ class authModel extends CI_Model
         $data = $this->db->where([
             'username' => $username,
             'password' => $password
-        ])
-            ->get('tb_user')
-            ->row();
+        ]);
 
         if (!empty($data)) {
-            return true;
+            return $this->db->get('tb_user')->row();
         } else {
             return false;
         }

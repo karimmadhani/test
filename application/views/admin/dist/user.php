@@ -103,7 +103,7 @@
                                     <td>
                                         <div class="w-100">
                                             <label class="switch">
-                                                <input type="checkbox" class="data-dipilih" data-id-user="<?= $row->id_user; ?> <?= $row->is_active === "active" ? 'checked' : ''; ?>">
+                                                <input type="checkbox" class="data-dipilih" data-id-user="<?= $row->id_user; ?>" <?= $row->is_active == 'active' ? 'checked' : ''; ?>>
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -141,8 +141,6 @@
         $(document).ready(function() {
 
             $('.data-dipilih').on('change', function() {
-
-                $('.data-dipilih').not(this).prop('checked', false);
 
                 let id_user = $(this).data('id-user');
 
